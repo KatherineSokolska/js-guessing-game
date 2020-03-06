@@ -2,32 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-
-    <title>Number guessing game</title>
-
-    <style>
-      html {
-        font-family: sans-serif;
-      }
-
-      body {
-        width: 50%;
-        max-width: 800px;
-        min-width: 480px;
-        margin: 0 auto;
-      }
-
-      .lastResult {
-        color: white;
-        padding: 3px;
-      }
-    </style>
+    <title>Игра "Угадай число"</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
     <h1>Игра "Угадай число"</h1>
 
-    <p>Мы загадали случайное число между 1 и 100. Посмотрим, сможешь ли ты угадать его за 10 попыток или быстрее. Мы подскажем, если число больше или меньше загаданного. Удачи!</p>
+    <p>Мы загадали случайное число между 1 и 100. Посмотрим, сможешь ли ты угадать его за 10 попыток или быстрее. Игра подскажет, если число больше или меньше загаданного. Удачи!</p>
 
     <div class="form">
       <label for="guessField">Ввести свою догадку: </label><input type="text" id="guessField" class="guessField">
@@ -40,96 +23,6 @@
       <p class="lowOrHi"></p>
     </div>
 
-
-    <script>
-        //генерируем случайное число от 1 до 100, вычисленное с использованием математического алгоритма
-        var randomNumber = Math.floor(Math.random() * 100) + 1;
-
-        //три переменные для хранения ссылок на абзацы результатов в нашем HTML и используются для вставки значений в абзацы
-        var guesses = document.querySelector('.guesses');
-        var lastResult = document.querySelector('.lastResult');
-        var lowOrHi  = document.querySelector('.lowOrHi');
-
-        //две переменных хранят ссылки на форму ввода текста и кнопку отправки а позже используются для управления подачи догадки
-        var guessSubmit = document.querySelector('.guessSubmit');
-        var guessField = document.querySelector('.guessField');
-
-        //сохраняет кол-во догадок
-        var guessCount = 1;
-        //кнопка сброса игры
-        var resetButton;
-
-        function checkGuess() {
-            //передается значение введенное в инпут
-            //метод Number() проверяет что точно введено число
-            var userGuess = Number(guessField.value);
-
-            if (guessCount === 1) {
-                guesses.textContent = 'Previous guesses: ';
-            }
-            guesses.textContent += userGuess + ' ';
-
-            //если угадал число
-            if (userGuess === randomNumber) {
-                lastResult.textContent = 'Поздравляем! Это правильное число!';
-                lastResult.style.backgroundColor = 'green';
-                lowOrHi.textContent = '';
-                setGameOver();
-            }
-            //если закончиличь ходы
-            else if (guessCount === 10) {
-                lastResult.textContent = '!!! ИГРА ОКОНЧЕНА !!!';
-                setGameOver();
-            }
-            //в процессе угадывания пока есть ходы
-            else {
-                lastResult.textContent = 'Неправильно!';
-                lastResult.style.backgroundColor = 'red';
-                if(userGuess < randomNumber) {
-                    lowOrHi.textContent = 'Твое число меньше загаданного!';
-                }
-                else if(userGuess > randomNumber) {
-                    lowOrHi.textContent = 'Твое число больше загаданного!';
-                }
-            }
-
-            guessCount++;
-            //очищаем инпут
-            guessField.value = '';
-            //фокусируемся на нем снова
-            guessField.focus();
-        }
-
-        guessSubmit.addEventListener('click', checkGuess);
-
-        function setGameOver() {
-            guessField.disabled = true;
-            guessSubmit.disabled = true;
-            resetButton = document.createElement('button');
-            resetButton.textContent = 'Начать новую игру';
-            document.body.appendChild(resetButton);
-            resetButton.addEventListener('click', resetGame);
-        }
-
-        function resetGame() {
-            guessCount = 1;
-
-            var resetParagraphs = document.querySelector('.resultParagraphs p');
-            for (var i = 0; i < resetParagraphs.length; i++){
-                resetParagraphs[i].textContent = '';
-            }
-
-            resetButton.parentNode.removeChild(resetButton);
-
-            guessField.disabled = false;
-            guessSubmit.disabled = false;
-            guessField.value = '';
-            guessField.focus();
-
-            lastResult.style.backgroundColor = 'white';
-
-            randomNumber = Math.floor(Math.random() * 100) + 1;
-        }
-    </script>
+    <script src="app.js"></script>
   </body>
 </html>
