@@ -25,11 +25,11 @@ function checkGuess() {
     if (guessCount === 1) {
         guesses.textContent = 'Предыдущие догадки: ';
     }
-    guesses.textContent += userGuess + ' ';
+    guesses.textContent += userGuess + '  ';
 
     //если угадал число
     if (userGuess === randomNumber) {
-        lastResult.textContent = 'Поздравляем! Это правильное число!';
+        lastResult.textContent = 'Поздравляем! ' + userGuess + ' - правильное число!';
         lastResult.style.backgroundColor = 'green';
         lowOrHi.textContent = '';
         setGameOver();
