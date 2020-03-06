@@ -72,7 +72,7 @@ function setGameOver() {
 function resetGame() {
     guessCount = 1;
 
-    var resetParagraphs = document.querySelector('.resultParagraphs p');
+    var resetParagraphs = document.querySelectorAll('.resultParagraphs p');
     for (var i = 0; i < resetParagraphs.length; i++){
         resetParagraphs[i].textContent = '';
     }
