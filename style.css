@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+}
+
+body {
+    width: 50%;
+    max-width: 800px;
+    min-width: 480px;
+    margin: 0 auto;
+
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+
+    background-color: rgb(255, 218, 169);
+}
+
+h1 {
+    margin-top: 10%;
+}
+
+div, h1 {
+    margin-bottom: 18px;
+}
+
+p {
+    padding-bottom: 36px;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+}
+
+.lastResult {
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+label {
+    display: inline-block;
+    width: 39%;
+}
+
+input {
+    display: inline-block;
+
+    border: none;
+    outline: none;
+
+    vertical-align: middle;
+    height: 30px;
+    width: 30%;
+    padding: 1px 7px;
+}
+
+input[type='submit'] {
+    letter-spacing: 0.5px;
+    font-size: .9rem;
+    background-color: rgb(224, 95, 19);
+    color: white;
+    cursor: pointer;
+}
